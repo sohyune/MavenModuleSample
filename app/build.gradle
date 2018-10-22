@@ -1,13 +1,40 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.novoda.bintray-release'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.8.1'
+    }
+}
+
+publish {
+    userOrg = 'hoi1idsh'
+    groupId = 'com.hoi1id.mavenmodulesample'
+    artifactId = 'maven-sample-module'
+    publishVersion = '0.0.1'
+    desc = 'my first maven module sample'
+    website = 'https://github.com/sohyune/MavenModuleSample'
+}
+
+
+//terminal upload command
+//./gradlew clean build bintrayUpload -PbintrayUser=hoi1id -PbintrayKey=eef1294981dc52f8816e626419f3a2b60521caee -PdryRun=false
+
+
+
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.hoi1id.mavenmodulesample"
+//        applicationId "com.hoi1id.mavenmodulesample"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
